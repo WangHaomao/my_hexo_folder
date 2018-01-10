@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="ExtendGcd,即扩展欧几里得算法的C++模板化解释"/>
+
+
+
+
+  <meta name="keywords" content="ACM&OJ," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/07/21/ExtendGcd,即扩展欧几里得算法的C++模板化解释/"/>
+
+
+<meta name="description" content="刚刚接触感觉很高大上的“扩展欧几里得算法“，很郁闷，研究了很久。现在感觉能够套模板了，当然这样是远远不够的，不过先写篇博客记录一下最近的动态。帮助自己记忆，也可以帮助大家理解下这个数学算法，当然欢迎各位的斧正和指点，我将不断努力！ 首先，明确我们要求ax+by=c中x,y的整数解（至于没有解的情况下边会讨论） 大家应该看到过ax+by=Gcd(a,b)的式子，现在我也不明白这是什么，以下是我大概能">
+<meta name="keywords" content="ACM&amp;OJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ExtendGcd,即扩展欧几里得算法的C++模板化解释">
+<meta property="og:url" content="http://yoursite.com/2015/07/21/ExtendGcd,即扩展欧几里得算法的C++模板化解释/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="刚刚接触感觉很高大上的“扩展欧几里得算法“，很郁闷，研究了很久。现在感觉能够套模板了，当然这样是远远不够的，不过先写篇博客记录一下最近的动态。帮助自己记忆，也可以帮助大家理解下这个数学算法，当然欢迎各位的斧正和指点，我将不断努力！ 首先，明确我们要求ax+by=c中x,y的整数解（至于没有解的情况下边会讨论） 大家应该看到过ax+by=Gcd(a,b)的式子，现在我也不明白这是什么，以下是我大概能">
+<meta property="og:updated_time" content="2018-01-09T00:48:05.039Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ExtendGcd,即扩展欧几里得算法的C++模板化解释">
+<meta name="twitter:description" content="刚刚接触感觉很高大上的“扩展欧几里得算法“，很郁闷，研究了很久。现在感觉能够套模板了，当然这样是远远不够的，不过先写篇博客记录一下最近的动态。帮助自己记忆，也可以帮助大家理解下这个数学算法，当然欢迎各位的斧正和指点，我将不断努力！ 首先，明确我们要求ax+by=c中x,y的整数解（至于没有解的情况下边会讨论） 大家应该看到过ax+by=Gcd(a,b)的式子，现在我也不明白这是什么，以下是我大概能">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> ExtendGcd,即扩展欧几里得算法的C++模板化解释 - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ExtendGcd,即扩展欧几里得算法的C++模板化解释
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 21 2015
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>刚刚接触感觉很高大上的“扩展欧几里得算法“，很郁闷，研究了很久。现在感觉能够套模板了，当然这样是远远不够的，不过先写篇博客记录一下最近的动态。帮助自己记忆，也可以帮助大家理解下这个数学算法，当然欢迎各位的斧正和指点，我将不断努力！</p>
+<p>首先，明确我们要求ax+by=c中x,y的整数解（至于没有解的情况下边会讨论）</p>
+<p>大家应该看到过ax+by=Gcd(a,b)的式子，现在我也不明白这是什么，以下是我大概能够死记硬背的（大家能学会的还是去学学原理）。</p>
+<p>先求gcd(a,b),程序如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;  </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="function">LL <span class="title">gcd</span><span class="params">(LL a,LL b)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">while</span>(a%b)&#123;  </span><br><span class="line">        LL temp=b;  </span><br><span class="line">        b=a%b;  </span><br><span class="line">        a=temp;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> b;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LL d=gcd(a,b);<br>后，a/=d,b/=d,c/=d;这里有当c%d!=0是，ax+by=c不存在整数解（我也不知道为什么，真的模板化了)</p>
+<p>于是原式变成a’x+b’y=c’。据说那个扩展欧几里得求的是a’x+b’y=1的解，给出extendGcd(a,b)的模板</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exGcd</span><span class="params">(LL a,LL b,LL &amp;x,LL &amp;y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)&#123;</span><br><span class="line">        x=<span class="number">1</span>;y=<span class="number">0</span>;  </span><br><span class="line">        <span class="keyword">return</span> ;  </span><br><span class="line">    &#125; </span><br><span class="line">    exGcd(b,a%b,x,y); </span><br><span class="line">        LL temp;  </span><br><span class="line">        temp=y;  </span><br><span class="line">        y=x-a/b*y;  </span><br><span class="line">        x=temp;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里不难得到修改后的x,y为方程a’x+b’y=1的解，那么c’x0,c’y0就是a’x+b’y=c’的一组特解了，根据参数方程的性质，我们引入t（整数）来写出x,y通解的参数方程x=c’x0-b’t，y=c’y0+a’t。<br>通常题目要求我们求问题的最小解，所以当x-&gt;0时，我们求出的t=c’x0/b(这里是有误差的，因为在C语言中的除不一定，事实上，我们可以判断下x&lt;0时，可以让t=t+1。</p>
+<p>下面来看一道典型的模板题吧。</p>
+<p>poj 1061 </p>
+<p>青蛙的约会<br>Time Limit: 1000MS         Memory Limit: 10000K<br>Total Submissions: 96453         Accepted: 18021<br>Description</p>
+<p>两只青蛙在网上相识了，它们聊得很开心，于是觉得很有必要见一面。它们很高兴地发现它们住在同一条纬度线上，于是它们约定各自朝西跳，直到碰面为止。可是它们出发之前忘记了一件很重要的事情，既没有问清楚对方的特征，也没有约定见面的具体位置。不过青蛙们都是很乐观的，它们觉得只要一直朝着某个方向跳下去，总能碰到对方的。但是除非这两只青蛙在同一时间跳到同一点上，不然是永远都不可能碰面的。为了帮助这两只乐观的青蛙，你被要求写一个程序来判断这两只青蛙是否能够碰面，会在什么时候碰面。<br>我们把这两只青蛙分别叫做青蛙A和青蛙B，并且规定纬度线上东经0度处为原点，由东往西为正方向，单位长度1米，这样我们就得到了一条首尾相接的数轴。设青蛙A的出发点坐标是x，青蛙B的出发点坐标是y。青蛙A一次能跳m米，青蛙B一次能跳n米，两只青蛙跳一次所花费的时间相同。纬度线总长L米。现在要你求出它们跳了几次以后才会碰面。<br>Input</p>
+<p>输入只包括一行5个整数x，y，m，n，L，其中x≠y &lt; 2000000000，0 &lt; m、n &lt; 2000000000，0 &lt; L &lt; 2100000000。<br>Output</p>
+<p>输出碰面所需要的跳跃次数，如果永远不可能碰面则输出一行”Impossible”<br>Sample Input<br>1 2 3 4 5<br>Sample Output<br>4</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;  </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="function">LL <span class="title">gcd</span><span class="params">(LL a,LL b)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">while</span>(a%b)&#123;  </span><br><span class="line">        LL temp=b;  </span><br><span class="line">        b=a%b;  </span><br><span class="line">        a=temp;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> b;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exGcd</span><span class="params">(LL a,LL b,LL &amp;x,LL &amp;y)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)&#123;  </span><br><span class="line">        x=<span class="number">1</span>;y=<span class="number">0</span>;  </span><br><span class="line">        <span class="keyword">return</span> ;  </span><br><span class="line">    &#125;  </span><br><span class="line">    exGcd(b,a%b,x,y);  </span><br><span class="line">        LL temp;  </span><br><span class="line">        temp=y;  </span><br><span class="line">        y=x-a/b*y;  </span><br><span class="line">        x=temp;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    LL x,y,m,n,l,ans,key,t;  </span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%I64d%I64d%I64d%I64d%I64d"</span>,&amp;x,&amp;y,&amp;m,&amp;n,&amp;l))&#123;  </span><br><span class="line">        <span class="comment">/* (n-m)*ans+k*l=x-y; </span></span><br><span class="line"><span class="comment">         * n-m=a,ans=x,k=y,l=b,x-y=c; </span></span><br><span class="line"><span class="comment">         *   a*x+b*y=c; </span></span><br><span class="line"><span class="comment">         */</span>  </span><br><span class="line">        LL a=n-m,b=l,c=x-y;  </span><br><span class="line">        LL d=gcd(a,b);  </span><br><span class="line">        <span class="comment">//cout &lt;&lt;  d  &lt;&lt;endl;  </span></span><br><span class="line">        <span class="keyword">if</span>(c%d) &#123;<span class="built_in">printf</span>(<span class="string">"Impossible\n"</span>);<span class="keyword">continue</span>;&#125;  </span><br><span class="line">  </span><br><span class="line">        a/=d;b/=d;c/=d;  </span><br><span class="line">        exGcd(a,b,ans,key);  </span><br><span class="line">  </span><br><span class="line">        t=c*ans/b;  </span><br><span class="line">        ans=c*ans-t*b;  </span><br><span class="line">        <span class="keyword">if</span>(ans&lt;<span class="number">0</span>)  </span><br><span class="line">            ans+=b;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,ans);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/ACM-OJ/">ACM&OJ</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/07/22/两道基础线段树简解:HDU 1166，HDU 1754/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">两道基础线段树简解:HDU 1166，HDU 1754</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/07/20/[转载]KMP算法详解：简洁易懂的KMP算法/">
+        <span class="next-text nav-default">(转) KMP算法详解：简洁易懂的KMP算法</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

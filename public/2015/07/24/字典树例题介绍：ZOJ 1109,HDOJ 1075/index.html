@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="字典树例题介绍：ZOJ 1109,HDOJ 1075"/>
+
+
+
+
+  <meta name="keywords" content="ACM&OJ," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/07/24/字典树例题介绍：ZOJ 1109,HDOJ 1075/"/>
+
+
+<meta name="description" content="关于字典树，相信还是比较好理解的吧，就是将一次输入中的一些单词，字符串建立成字典。将这些字符每一层存放一个字符，顺序往下查找，在该个字符串（找完该字符串的最后一个字符，即最后一个节点）末尾设置一个节点（一般是存放的东西，比如要翻译过来的单词啊什么的）。 下面来分享两道典型的字典树题： 1.ZOJ 1109 Language of FatMouse：http://acm.zju.edu.cn/onl">
+<meta name="keywords" content="ACM&amp;OJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字典树例题介绍：ZOJ 1109,HDOJ 1075">
+<meta property="og:url" content="http://yoursite.com/2015/07/24/字典树例题介绍：ZOJ 1109,HDOJ 1075/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="关于字典树，相信还是比较好理解的吧，就是将一次输入中的一些单词，字符串建立成字典。将这些字符每一层存放一个字符，顺序往下查找，在该个字符串（找完该字符串的最后一个字符，即最后一个节点）末尾设置一个节点（一般是存放的东西，比如要翻译过来的单词啊什么的）。 下面来分享两道典型的字典树题： 1.ZOJ 1109 Language of FatMouse：http://acm.zju.edu.cn/onl">
+<meta property="og:updated_time" content="2018-01-09T00:55:50.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字典树例题介绍：ZOJ 1109,HDOJ 1075">
+<meta name="twitter:description" content="关于字典树，相信还是比较好理解的吧，就是将一次输入中的一些单词，字符串建立成字典。将这些字符每一层存放一个字符，顺序往下查找，在该个字符串（找完该字符串的最后一个字符，即最后一个节点）末尾设置一个节点（一般是存放的东西，比如要翻译过来的单词啊什么的）。 下面来分享两道典型的字典树题： 1.ZOJ 1109 Language of FatMouse：http://acm.zju.edu.cn/onl">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 字典树例题介绍：ZOJ 1109,HDOJ 1075 - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          字典树例题介绍：ZOJ 1109,HDOJ 1075
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 24 2015
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>关于字典树，相信还是比较好理解的吧，就是将一次输入中的一些单词，字符串建立成字典。将这些字符每一层存放一个字符，顺序往下查找，在该个字符串（找完该字符串的最后一个字符，即最后一个节点）末尾设置一个节点（一般是存放的东西，比如要翻译过来的单词啊什么的）。</p>
+<p>下面来分享两道典型的字典树题：</p>
+<p>1.ZOJ 1109 Language of FatMouse：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=1109" target="_blank" rel="noopener">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=1109</a></p>
+<p>大概题意:FatMouse只会说鼠语，但是为了迎接WTO的热潮，它想学好英语，所以就搞了个类似小抄的东西。输入英语语言和鼠语，要求我们将鼠语言翻译英语输出。</p>
+<p>这是单词的翻译，属于简单的字典树。只要将鼠语见成字典树，对应的英语单词作为节点放在鼠语结束的末尾，每次翻译是查找字典树即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;  </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">char</span> fwords[<span class="number">11</span>];  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span>&#123;</span>  </span><br><span class="line">    Trie *next[<span class="number">26</span>];     <span class="comment">//建树，每一层都有26个小写的英文单词（管它用不用呢，万一要全用），如果加入大写和数字，那就要开的更大了  </span></span><br><span class="line">    <span class="keyword">char</span> eword[<span class="number">11</span>];     <span class="comment">//用来储存英语（要存在节点出的，同样，管他用不用呢。  </span></span><br><span class="line">  </span><br><span class="line">    Trie()&#123;             <span class="comment">//树的初始化  </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)  </span><br><span class="line">            next[i]=<span class="literal">NULL</span>;  </span><br><span class="line">        eword[<span class="number">0</span>]=<span class="string">'\0'</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">Trie root;                          <span class="comment">//这里是树根，从此开始往下建树  </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">char</span> ew[],<span class="keyword">char</span> d[])</span></span>&#123;     <span class="comment">//d是鼠语  </span></span><br><span class="line">    Trie *now=&amp;root;                <span class="comment">//每次建树都要从树根开始，看看初始鼠语字符是否存在  </span></span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(d);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(now-&gt;next[d[i]-<span class="string">'a'</span>]==<span class="literal">NULL</span>)   <span class="comment">//如果没有，那就新往下建一个  </span></span><br><span class="line">            now-&gt;next[d[i]-<span class="string">'a'</span>]=<span class="keyword">new</span> Trie;  </span><br><span class="line">        now=now-&gt;next[d[i]-<span class="string">'a'</span>];        <span class="comment">//有那就顺着这个节点往下摸  </span></span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">strcpy</span>(now-&gt;eword,ew);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">TrieSearch</span><span class="params">(<span class="keyword">char</span> str[])</span></span>&#123;  </span><br><span class="line">    Trie *p=&amp;root;  </span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(str);  </span><br><span class="line">    <span class="keyword">int</span> i;  </span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len&amp;&amp;p-&gt;next[str[i]-<span class="string">'a'</span>]!=<span class="literal">NULL</span>;i++)  </span><br><span class="line">        p=p-&gt;next[str[i]-<span class="string">'a'</span>];  </span><br><span class="line">    <span class="keyword">if</span>(i==len&amp;&amp;<span class="built_in">strlen</span>(p-&gt;eword)!=<span class="number">0</span>)  </span><br><span class="line">        <span class="keyword">return</span> p-&gt;eword;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;  </span><br><span class="line">  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">char</span> re[<span class="number">11</span>],dic[<span class="number">11</span>];  </span><br><span class="line">    <span class="keyword">char</span> line[<span class="number">30</span>];  </span><br><span class="line">    <span class="keyword">while</span>(gets(line))&#123;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strlen</span>(line) == <span class="number">0</span>)<span class="keyword">break</span>;  </span><br><span class="line">        <span class="built_in">sscanf</span>(line,<span class="string">"%s%s"</span>,re,dic);  </span><br><span class="line">        build(re,dic);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">while</span>(gets(line))&#123;  </span><br><span class="line">        <span class="keyword">char</span> *p=TrieSearch(line);  </span><br><span class="line">        <span class="keyword">if</span>(p) <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,p);  </span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"eh\n"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来是个稍微变化了一下的字典树题目：<br>DHOJ 1075hdoj What Are You Talking About：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1075" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=1075</a></p>
+<p>题意：同样也是要翻译，但是这次输入有其他的各种符号，但是不用管它，最后的时候处理就好了，给出代码：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Trie  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;  </span></span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">char</span> tmp[<span class="number">3000</span>+<span class="number">10</span>];  <span class="comment">//后续输入  </span></span><br><span class="line"><span class="comment">//树的结构体  </span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">char</span> ewards[<span class="number">11</span>];  </span><br><span class="line">    Trie *next[<span class="number">26</span>];  </span><br><span class="line">    Trie()&#123;  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)  </span><br><span class="line">            next[i]=<span class="literal">NULL</span>;  </span><br><span class="line">        ewards[<span class="number">0</span>]=<span class="string">'\0'</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">Trie root;          <span class="comment">//建立字典树树根  </span></span><br><span class="line"><span class="comment">//函数功能：建树并保存单词（即在单词结束时保存节点）  </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">char</span> e[],<span class="keyword">char</span> mar[])</span></span>&#123;  </span><br><span class="line">    Trie *now=&amp;root;            <span class="comment">//从树顶端开始建立  </span></span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(mar);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;     <span class="comment">//mar是字典，直到将其全部非'\0'字符历遍  </span></span><br><span class="line">        <span class="keyword">if</span>(now-&gt;next[mar[i]-<span class="string">'a'</span>]==<span class="literal">NULL</span>)  </span><br><span class="line">            now-&gt;next[mar[i]-<span class="string">'a'</span>]=<span class="keyword">new</span> Trie;<span class="comment">//如果该字符未被保存过，那么建立新的节点  </span></span><br><span class="line">        now=now-&gt;next[mar[i]-<span class="string">'a'</span>];  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">strcpy</span>(now-&gt;ewards,e);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">TrieSearch</span><span class="params">(<span class="keyword">char</span> s[])</span></span>&#123;  </span><br><span class="line">    Trie *p =&amp;root;  </span><br><span class="line">    <span class="keyword">int</span> i;          <span class="comment">// 下边还会用到  </span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;s[i]!=<span class="string">'\0'</span>&amp;&amp;p-&gt;next[s[i]-<span class="string">'a'</span>]!=<span class="literal">NULL</span>;i++)  </span><br><span class="line">        p=p-&gt;next[s[i]-<span class="string">'a'</span>];            <span class="comment">//符合要求那么就继续向下  </span></span><br><span class="line">    <span class="keyword">if</span>(s[i]==<span class="string">'\0'</span>&amp;&amp;<span class="built_in">strlen</span>(p-&gt;ewards)!=<span class="number">0</span>)<span class="comment">//s被历遍，且最后一个树点有节点标记（此处为有单词  </span></span><br><span class="line">        <span class="keyword">return</span> p-&gt;ewards;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">char</span> ear[<span class="number">11</span>],mar[<span class="number">11</span>];  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,ear);  </span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,ear)&amp;&amp;ear[<span class="number">0</span>]!=<span class="string">'E'</span>)&#123;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,mar);  </span><br><span class="line">        build(ear,mar);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,mar);<span class="built_in">scanf</span>(<span class="string">"\n"</span>);    <span class="comment">//输入START，记得吞'\n'  </span></span><br><span class="line">    <span class="built_in">memset</span>(tmp,<span class="string">'\0'</span>,<span class="keyword">sizeof</span>(tmp));  </span><br><span class="line">    <span class="keyword">while</span>(gets(tmp)!=<span class="literal">NULL</span>&amp;&amp;tmp[<span class="number">0</span>]!=<span class="string">'E'</span>)&#123;  </span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(tmp);  </span><br><span class="line">        tmp[len]=<span class="string">' '</span>;len++;  </span><br><span class="line">        <span class="keyword">char</span> tp[<span class="number">3000</span>+<span class="number">10</span>];  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,k=<span class="number">0</span>;i&lt;len;i++)&#123;  </span><br><span class="line">            <span class="keyword">if</span>(tmp[i]&gt;=<span class="string">'a'</span>||tmp[i]&lt;=<span class="string">'z'</span>)&#123;  </span><br><span class="line">                tp[k]=<span class="string">'\0'</span>;  </span><br><span class="line">                <span class="keyword">char</span> *temp=TrieSearch(tp);  </span><br><span class="line">                <span class="keyword">if</span>(temp) <span class="built_in">printf</span>(<span class="string">"%s"</span>,temp);  </span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%s"</span>,tp);  </span><br><span class="line">                k=<span class="number">0</span>;                    <span class="comment">//从新开始保存单词或者结束  </span></span><br><span class="line">                <span class="keyword">if</span>(i!=len<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>,tmp[i]);  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">                tp[k++]=tmp[i];  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不难发现，字典树对于内存上的消耗还是很大的，下面给出第一题的另一种解法，研究qsort的结构体字符串排序想了好久，再利用二分，时间上就满足了。但是这种方法有些题目还是有些不适用的。我也没想清楚。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100000+10  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">words</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">char</span> ewords[<span class="number">11</span>];  </span><br><span class="line">    <span class="keyword">char</span> ftword[<span class="number">11</span>];  </span><br><span class="line">&#125;arr[MAXN];  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a,<span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span>&#123;  </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">words</span> *<span class="title">pa</span> = (<span class="title">struct</span> <span class="title">words</span> *)<span class="title">a</span>;</span>  </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">words</span> *<span class="title">pb</span> = (<span class="title">struct</span> <span class="title">words</span> *)<span class="title">b</span>;</span>  </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strcmp</span>(pa-&gt;ftword,pb-&gt;ftword);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">dsearch</span><span class="params">(<span class="keyword">char</span> id[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123; <span class="comment">// 排序后进行二分查找，快速定位下来  </span></span><br><span class="line">    <span class="keyword">while</span>(low&lt;=high)&#123;  </span><br><span class="line">        <span class="keyword">int</span> mid=(low+high)&gt;&gt;<span class="number">1</span>;  </span><br><span class="line">        <span class="comment">//cout &lt;&lt; "str1="&lt;&lt; id &lt;&lt;" str2="&lt;&lt;arr[mid].ftword&lt;&lt;endl;  </span></span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">strcmp</span>(id,arr[mid].ftword))&#123;  </span><br><span class="line">            <span class="keyword">return</span> arr[mid].ewords;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(id,arr[mid].ftword)&gt;<span class="number">0</span>)  </span><br><span class="line">            low=mid+<span class="number">1</span>;  </span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">            high=mid<span class="number">-1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;  </span><br><span class="line">  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">char</span> line[<span class="number">30</span>];  </span><br><span class="line">    <span class="keyword">for</span>(m=<span class="number">0</span>;gets(line)&amp;&amp;<span class="built_in">strlen</span>(line);m++)&#123;  </span><br><span class="line">        <span class="built_in">sscanf</span>(line,<span class="string">"%s%s"</span>,arr[m].ewords,arr[m].ftword);  </span><br><span class="line">    &#125;  </span><br><span class="line">    qsort(arr,m,<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]),cmp);  </span><br><span class="line">    <span class="keyword">while</span>(gets(line)&amp;&amp;<span class="built_in">strlen</span>(line))&#123;  </span><br><span class="line">        <span class="keyword">char</span> *p=dsearch(line,<span class="number">0</span>,m);  </span><br><span class="line">        <span class="keyword">if</span>(p) <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,p);  </span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"eh\n"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/ACM-OJ/">ACM&OJ</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/11/14/本科生涯的ACM历程总结——香港区域赛/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">本科生涯的ACM历程总结——记香港区域赛</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/07/22/两道基础线段树简解:HDU 1166，HDU 1754/">
+        <span class="next-text nav-default">两道基础线段树简解:HDU 1166，HDU 1754</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

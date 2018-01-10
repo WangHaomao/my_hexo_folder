@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="两道基础线段树简解:HDU 1166，HDU 1754"/>
+
+
+
+
+  <meta name="keywords" content="ACM&OJ," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/07/22/两道基础线段树简解:HDU 1166，HDU 1754/"/>
+
+
+<meta name="description" content="今天刚学了下线段树，感觉如果想快速攻入熟练的程度还是需要时间的，不过看了几题之后发现这些还是有规律的，或许是我们所说的模板吧。但是还是很多难题不能解出来的。还有就是，我感觉上来，树的算法还是比较依靠空间的（不知是不是我做的优化还不够）。写下两道简单的题目，供自己记忆和理解，有兴趣的朋友也可以看看，帮忙斧正斧正。 接下来的两道题我也想了很久，看了许多朋友写的代码，好不容易才磨出来。我还要加油了！DH">
+<meta name="keywords" content="ACM&amp;OJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两道基础线段树简解:HDU 1166，HDU 1754">
+<meta property="og:url" content="http://yoursite.com/2015/07/22/两道基础线段树简解:HDU 1166，HDU 1754/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="今天刚学了下线段树，感觉如果想快速攻入熟练的程度还是需要时间的，不过看了几题之后发现这些还是有规律的，或许是我们所说的模板吧。但是还是很多难题不能解出来的。还有就是，我感觉上来，树的算法还是比较依靠空间的（不知是不是我做的优化还不够）。写下两道简单的题目，供自己记忆和理解，有兴趣的朋友也可以看看，帮忙斧正斧正。 接下来的两道题我也想了很久，看了许多朋友写的代码，好不容易才磨出来。我还要加油了！DH">
+<meta property="og:updated_time" content="2018-01-09T00:57:46.224Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="两道基础线段树简解:HDU 1166，HDU 1754">
+<meta name="twitter:description" content="今天刚学了下线段树，感觉如果想快速攻入熟练的程度还是需要时间的，不过看了几题之后发现这些还是有规律的，或许是我们所说的模板吧。但是还是很多难题不能解出来的。还有就是，我感觉上来，树的算法还是比较依靠空间的（不知是不是我做的优化还不够）。写下两道简单的题目，供自己记忆和理解，有兴趣的朋友也可以看看，帮忙斧正斧正。 接下来的两道题我也想了很久，看了许多朋友写的代码，好不容易才磨出来。我还要加油了！DH">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 两道基础线段树简解:HDU 1166，HDU 1754 - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          两道基础线段树简解:HDU 1166，HDU 1754
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 22 2015
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>今天刚学了下线段树，感觉如果想快速攻入熟练的程度还是需要时间的，不过看了几题之后发现这些还是有规律的，或许是我们所说的模板吧。但是还是很多难题不能解出来的。还有就是，我感觉上来，树的算法还是比较依靠空间的（不知是不是我做的优化还不够）。写下两道简单的题目，供自己记忆和理解，有兴趣的朋友也可以看看，帮忙斧正斧正。</p>
+<p>接下来的两道题我也想了很久，看了许多朋友写的代码，好不容易才磨出来。我还要加油了！<br>DHU 1166 敌兵布阵</p>
+<p>敌兵布阵<br>Time Limit:1000MS     Memory Limit:32768KB     64bit IO Format:%I64d &amp; %I64u<br>SubmitStatus</p>
+<p>Description<br> C国的死对头A国这段时间正在进行军事演习，所以C国间谍头子Derek和他手下Tidy又开始忙乎了。A国在海岸线沿直线布置了N个工兵营地,Derek和Tidy的任务就是要监视这些工兵营地的活动情况。由于采取了某种先进的监测手段，所以每个工兵营地的人数C国都掌握的一清二楚,每个工兵营地的人数都有可能发生变动，可能增加或减少若干人手,但这些都逃不过C国的监视。<br>中央情报局要研究敌人究竟演习什么战术,所以Tidy要随时向Derek汇报某一段连续的工兵营地一共有多少人,例如Derek问:“Tidy,马上汇报第3个营地到第10个营地共有多少人!”Tidy就要马上开始计算这一段的总人数并汇报。但敌兵营地的人数经常变动，而Derek每次询问的段都不一样，所以Tidy不得不每次都一个一个营地的去数，很快就精疲力尽了，Derek对Tidy的计算速度越来越不满:”你个死肥仔，算得这么慢，我炒你鱿鱼!”Tidy想：“你自己来算算看，这可真是一项累人的工作!我恨不得你炒我鱿鱼呢!”无奈之下，Tidy只好打电话向计算机专家Windbreaker求救,Windbreaker说：“死肥仔，叫你平时做多点acm题和看多点算法书，现在尝到苦果了吧!”Tidy说：”我知错了。。。”但Windbreaker已经挂掉电话了。Tidy很苦恼，这么算他真的会崩溃的，聪明的读者，你能写个程序帮他完成这项工作吗？不过如果你的程序效率不够高的话，Tidy还是会受到Derek的责骂的. </p>
+<p>Input<br>第一行一个整数T，表示有T组数据。<br>每组数据第一行一个正整数N（N&lt;=50000）,表示敌人有N个工兵营地，接下来有N个正整数,第i个正整数ai代表第i个工兵营地里开始时有ai个人（1&lt;=ai&lt;=50）。<br>接下来每行有一条命令，命令有4种形式：<br>(1) Add i j,i和j为正整数,表示第i个营地增加j个人（j不超过30）<br>(2)Sub i j ,i和j为正整数,表示第i个营地减少j个人（j不超过30）;<br>(3)Query i j ,i和j为正整数,i&lt;=j，表示询问第i到第j个营地的总人数;<br>(4)End 表示结束，这条命令在每组数据最后出现;<br>每组数据最多有40000条命令<br>Output</p>
+<p>对第i组数据,首先输出“Case i:”和回车,<br>对于每个Query询问，输出一个整数并回车,表示询问的段中的总人数,这个数保持在int以内。 </p>
+<p>Sample Input</p>
+<p>1<br>10<br>1 2 3 4 5 6 7 8 9 10<br>Query 1 3<br>Add 3 6<br>Query 2 7<br>Sub 10 2<br>Add 6 3<br>Query 3 10<br>End </p>
+<p>Sample Output</p>
+<p>Case 1:<br>6<br>33<br>59 </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50000+5  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> sumOfPeople[MAXN];  </span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> Qsum;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">int</span> l;  </span><br><span class="line">    <span class="keyword">int</span> r;  </span><br><span class="line">    <span class="keyword">int</span> sum;  </span><br><span class="line">&#125;node[<span class="number">4</span>*MAXN];              <span class="comment">//线段树记得开到原来MAXN的4倍,其实消耗好像并没有这么大。  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> i)</span></span>&#123;  <span class="comment">//建树，线段树很多思想都用到二分的方法  </span></span><br><span class="line">    node[i].l=x;  </span><br><span class="line">    node[i].r=y;  </span><br><span class="line">    <span class="keyword">if</span>(x==y) node[i].sum=sumOfPeople[y];<span class="comment">//当y==x时，到达最底下node,有的朋友习惯在这里用scanf读入数据。  </span></span><br><span class="line">    <span class="keyword">else</span>&#123;  </span><br><span class="line">        build(x,(x+y)/<span class="number">2</span>,i&lt;&lt;<span class="number">1</span>);           <span class="comment">//x+y/2为左边子树的右端点，(x+y)/2+1为右端树左端点  </span></span><br><span class="line">        build((x+y)/<span class="number">2</span>+<span class="number">1</span>,y,i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);       <span class="comment">//node下标变为i*2和i*2+1  </span></span><br><span class="line">        node[i].sum=node[i+i].sum+node[i+i+<span class="number">1</span>].sum;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> i)</span></span>&#123;          <span class="comment">//询问  </span></span><br><span class="line">    <span class="keyword">if</span>(x&lt;=node[i].l&amp;&amp;y&gt;=node[i].r)      <span class="comment">//找到后修改全局变量  </span></span><br><span class="line">        Qsum+=node[i].sum;  </span><br><span class="line">    <span class="keyword">else</span>&#123;  </span><br><span class="line">        <span class="keyword">int</span> mid=(node[i].l+node[i].r)/<span class="number">2</span>;<span class="comment">//否则左右查找  </span></span><br><span class="line">        <span class="keyword">if</span>(x&gt;mid) query(x,y,i+i+<span class="number">1</span>);  </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(y&lt;=mid) query(x,y,i+i);  </span><br><span class="line">        <span class="keyword">else</span>&#123;  </span><br><span class="line">            query(x,y,i+i);             <span class="comment">//记得不在某一边时两边都要查找  </span></span><br><span class="line">            query(x,y,i+i+<span class="number">1</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> i)</span></span>&#123;  </span><br><span class="line">    node[i].sum+=y;  </span><br><span class="line">    <span class="keyword">if</span>(node[i].l==x&amp;&amp;node[i].r==x) <span class="keyword">return</span>;  </span><br><span class="line">    <span class="keyword">if</span>(x&gt;(node[i].l+node[i].r)/<span class="number">2</span>) add(x,y,i+i+<span class="number">1</span>);  </span><br><span class="line">    <span class="keyword">else</span> add(x,y,i+i);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> i)</span>  </span>&#123;  </span><br><span class="line">    node[i].sum-=y;  </span><br><span class="line">    <span class="keyword">if</span>(node[i].l==x&amp;&amp;node[i].r==x) <span class="keyword">return</span>;  </span><br><span class="line">    <span class="keyword">if</span>(x&gt;(node[i].l+node[i].r)/<span class="number">2</span>) sub(x,y,i+i+<span class="number">1</span>);  </span><br><span class="line">    <span class="keyword">else</span> sub(x,y,i+i);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> times=<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">int</span> T;  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);  </span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d:\n"</span>,times++);  </span><br><span class="line">        <span class="keyword">int</span> N;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N);  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;sumOfPeople[i]);  </span><br><span class="line">        build(<span class="number">1</span>,N,<span class="number">1</span>);  </span><br><span class="line">        <span class="keyword">char</span> key[<span class="number">10</span>];  </span><br><span class="line">        <span class="comment">//scanf("\n");  </span></span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">" %s"</span>,key)&amp;&amp;key[<span class="number">0</span>]!=<span class="string">'E'</span>)&#123;<span class="comment">//" %s"前的空格用于清空缓冲区  </span></span><br><span class="line">            <span class="keyword">int</span> a,b;  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);  </span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">strcmp</span>(key,<span class="string">"Query"</span>)==<span class="number">0</span>)&#123;  </span><br><span class="line">                Qsum=<span class="number">0</span>;  </span><br><span class="line">                query(a,b,<span class="number">1</span>);  </span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;Qsum&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(key,<span class="string">"Add"</span>)==<span class="number">0</span>)  </span><br><span class="line">                add(a,b,<span class="number">1</span>);  </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(key,<span class="string">"Sub"</span>)==<span class="number">0</span>)  </span><br><span class="line">                sub(a,b,<span class="number">1</span>);  </span><br><span class="line">            <span class="comment">//printf("%s\n",key);  </span></span><br><span class="line">            <span class="comment">//scanf("\n");  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面这题是线段树的另一种用法：找max/min值</p>
+<p>I Hate It<br>Time Limit:3000MS     Memory Limit:32768KB     64bit IO Format:%I64d &amp; %I64u<br>SubmitStatus</p>
+<p>Description</p>
+<p>很多学校流行一种比较的习惯。老师们很喜欢询问，从某某到某某当中，分数最高的是多少。<br>这让很多学生很反感。 </p>
+<p>不管你喜不喜欢，现在需要你做的是，就是按照老师的要求，写一个程序，模拟老师的询问。当然，老师有时候需要更新某位同学的成绩。 </p>
+<p>Input<br>本题目包含多组测试，请处理到文件结束。<br>在每个测试的第一行，有两个正整数 N 和 M ( 0&lt;N&lt;=200000,0&lt;M&lt;5000 )，分别代表学生的数目和操作的数目。<br>学生ID编号分别从1编到N。<br>第二行包含N个整数，代表这N个学生的初始成绩，其中第i个数代表ID为i的学生的成绩。<br>接下来有M行。每一行有一个字符 C (只取’Q’或’U’) ，和两个正整数A，B。<br>当C为’Q’的时候，表示这是一条询问操作，它询问ID从A到B(包括A,B)的学生当中，成绩最高的是多少。<br>当C为’U’的时候，表示这是一条更新操作，要求把ID为A的学生的成绩更改为B。 </p>
+<p>Output<br>对于每一次询问操作，在一行里面输出最高成绩。 </p>
+<p>Sample Input</p>
+<p>5 6<br>1 2 3 4 5<br>Q 1 5<br>U 3 6<br>Q 3 4<br>Q 4 5<br>U 2 9<br>Q 1 5 </p>
+<p>Sample Output</p>
+<p>5<br>6<br>5<br>9 </p>
+<p> Hint</p>
+<p>Huge input,the C function scanf() will work better than cin </p>
+<p>代码和上题类似</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 200000+10  </span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> stu[MAX];  </span><br><span class="line"><span class="keyword">int</span> MaxMarks=<span class="number">0</span>;  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">int</span> l;  </span><br><span class="line">    <span class="keyword">int</span> r;  </span><br><span class="line">    <span class="keyword">int</span> maxn;  </span><br><span class="line">&#125;node[<span class="number">4</span>*MAX];  </span><br><span class="line"><span class="comment">//建树，最简单的一部分。  </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> i)</span></span>&#123;  </span><br><span class="line">    node[i].l=x;  </span><br><span class="line">    node[i].r=y;  </span><br><span class="line">    <span class="keyword">if</span>(x==y)&#123; node[i].maxn=stu[x];<span class="keyword">return</span> ;&#125;  </span><br><span class="line">    <span class="keyword">int</span> mid=(x+y)/<span class="number">2</span>;  </span><br><span class="line">    build(x,mid,i+i);  </span><br><span class="line">    build(mid+<span class="number">1</span>,y,i+i+<span class="number">1</span>);  </span><br><span class="line">    node[i].maxn=max(node[i+i+<span class="number">1</span>].maxn,node[i+i].maxn);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//询问函数：这边有一点我也不太清楚，写出void修改全局变量好像更快一些  </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> i)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(x==node[i].l&amp;&amp;node[i].r==y)  </span><br><span class="line">        <span class="keyword">return</span> node[i].maxn;  </span><br><span class="line">    <span class="keyword">int</span> mid=(node[i].r+node[i].l)&gt;&gt;<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">if</span>(x&gt;mid) <span class="keyword">return</span> query(x,y,i+i+<span class="number">1</span>);  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(y&lt;=mid) <span class="keyword">return</span> query(x,y,i+i);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">        <span class="keyword">return</span> max(query(x,mid,i+i),query(mid+<span class="number">1</span>,y,i+i+<span class="number">1</span>));  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upData</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> i,<span class="keyword">int</span> tmp)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(x== node[i].l &amp;&amp; y==node[i].r)&#123;  </span><br><span class="line">        node[i].maxn = tmp;  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">int</span> mid =(node[i].l + node[i].r)&gt;&gt;<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">if</span>(y &lt;= mid)  </span><br><span class="line">        upData(x,y,i&lt;&lt;<span class="number">1</span>,tmp);  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x&gt;mid)  </span><br><span class="line">        upData(x,y,i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,tmp);  </span><br><span class="line">    <span class="keyword">else</span> &#123;  </span><br><span class="line">        upData(x,mid,i&lt;&lt;<span class="number">1</span>,tmp);  </span><br><span class="line">        upData(mid+<span class="number">1</span>,y,i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,tmp);  </span><br><span class="line">    &#125;  </span><br><span class="line">    node[i].maxn = max(node[i&lt;&lt;<span class="number">1</span>].maxn,node[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].maxn); <span class="comment">//更新完单个点之后更新整棵树  </span></span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> N,T;  </span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;N,&amp;T))&#123;  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;stu[i]);  </span><br><span class="line">        build(<span class="number">1</span>,N,<span class="number">1</span>);  </span><br><span class="line">        <span class="keyword">while</span>(T--)&#123;  </span><br><span class="line">            <span class="keyword">char</span> c;  </span><br><span class="line">            <span class="keyword">int</span> a,b;  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">" %c%d%d"</span>,&amp;c,&amp;a,&amp;b);  </span><br><span class="line">            <span class="comment">//cout &lt;&lt; "a="&lt;&lt;a&lt;&lt;" b="&lt;&lt;b&lt;&lt;endl;  </span></span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'Q'</span>) <span class="built_in">cout</span> &lt;&lt; query(a,b,<span class="number">1</span>)&lt;&lt;<span class="built_in">endl</span>;  </span><br><span class="line">            <span class="keyword">else</span> upData(a,a,<span class="number">1</span>,b);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/ACM-OJ/">ACM&OJ</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/07/24/字典树例题介绍：ZOJ 1109,HDOJ 1075/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">字典树例题介绍：ZOJ 1109,HDOJ 1075</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/07/21/ExtendGcd,即扩展欧几里得算法的C++模板化解释/">
+        <span class="next-text nav-default">ExtendGcd,即扩展欧几里得算法的C++模板化解释</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

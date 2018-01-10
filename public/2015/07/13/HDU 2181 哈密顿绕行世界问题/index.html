@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="HDU 2181 哈密顿绕行世界问题"/>
+
+
+
+
+  <meta name="keywords" content="ACM&OJ," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/07/13/HDU 2181 哈密顿绕行世界问题/"/>
+
+
+<meta name="description" content="看到挺多人在写博客的，我也想来学习学习，接触ACM也快1年了吧，不过到现在还是个渣渣，不过正在努力提高！ 写的第一篇博客，哈密顿绕行世界问题：深度搜索问题（深搜）。与一般的地图找点（找出口问题）相似，只是搜索过程中需要记录每次走过的点，便于输出。题目如下：高手别喷，如有雷同，请勿见怪。 题目链接: http://acm.hdu.edu.cn/showproblem.php?pid=2181 123">
+<meta name="keywords" content="ACM&amp;OJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDU 2181 哈密顿绕行世界问题">
+<meta property="og:url" content="http://yoursite.com/2015/07/13/HDU 2181 哈密顿绕行世界问题/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="看到挺多人在写博客的，我也想来学习学习，接触ACM也快1年了吧，不过到现在还是个渣渣，不过正在努力提高！ 写的第一篇博客，哈密顿绕行世界问题：深度搜索问题（深搜）。与一般的地图找点（找出口问题）相似，只是搜索过程中需要记录每次走过的点，便于输出。题目如下：高手别喷，如有雷同，请勿见怪。 题目链接: http://acm.hdu.edu.cn/showproblem.php?pid=2181 123">
+<meta property="og:updated_time" content="2018-01-08T02:11:49.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HDU 2181 哈密顿绕行世界问题">
+<meta name="twitter:description" content="看到挺多人在写博客的，我也想来学习学习，接触ACM也快1年了吧，不过到现在还是个渣渣，不过正在努力提高！ 写的第一篇博客，哈密顿绕行世界问题：深度搜索问题（深搜）。与一般的地图找点（找出口问题）相似，只是搜索过程中需要记录每次走过的点，便于输出。题目如下：高手别喷，如有雷同，请勿见怪。 题目链接: http://acm.hdu.edu.cn/showproblem.php?pid=2181 123">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> HDU 2181 哈密顿绕行世界问题 - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          HDU 2181 哈密顿绕行世界问题
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 13 2015
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>看到挺多人在写博客的，我也想来学习学习，接触ACM也快1年了吧，不过到现在还是个渣渣，不过正在努力提高！</p>
+<p>写的第一篇博客，哈密顿绕行世界问题：深度搜索问题（深搜）。与一般的地图找点（找出口问题）相似，只是搜索过程中需要记录每次走过的点，便于输出。题目如下：高手别喷，如有雷同，请勿见怪。</p>
+<p>题目链接: <a href="http://acm.hdu.edu.cn/showproblem.php?pid=2181" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=2181</a><link></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;cstdio&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;cstring&gt;  </span></span><br><span class="line">  </span><br><span class="line">const int MAXN=21;  </span><br><span class="line">  </span><br><span class="line">using namespace std;  </span><br><span class="line">  </span><br><span class="line">int way[MAXN];          //保存每次走过的城市  </span><br><span class="line">int sumWays=0;          //记录总共有多少方案  </span><br><span class="line">int cas;  </span><br><span class="line">bool mp[MAXN][MAXN];    //保存原始输入数据  </span><br><span class="line">bool used[MAXN];        //判断该点（城市）是否被用过  </span><br><span class="line">  </span><br><span class="line">void <span class="function"><span class="title">inPut</span></span>()&#123;  </span><br><span class="line">    int a,b,c;  </span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=20;i++)&#123;  </span><br><span class="line">        scanf(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);  </span><br><span class="line">        mp[i][a]=<span class="literal">true</span>;  //表示与i城市连通的城市a,b,c。（数组特殊用法  </span><br><span class="line">        mp[i][b]=<span class="literal">true</span>;  </span><br><span class="line">        mp[i][c]=<span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">void dfs(int nowStep,int count)&#123;  </span><br><span class="line">    way[count]=nowStep;             //当前计数走的城市编号，便于输出  </span><br><span class="line">    <span class="keyword">if</span>(count==19)&#123;                  //搜索结束条件：当20个城市全部走完时  </span><br><span class="line">        <span class="keyword">if</span>(mp[nowStep][cas])&#123;       //若能够回到原点，则输出  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d:  "</span>, ++ sumWays);  </span><br><span class="line">            <span class="keyword">for</span>(int i = 0; i &lt; 20; ++ i)&#123;  </span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>, way[i]);  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, way[0]);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span>&#123;  </span><br><span class="line">        <span class="keyword">for</span>(int j = 1; j &lt;= 20; j ++)&#123;  //找某条路是否连通，且通往该城市未被走过  </span><br><span class="line">            <span class="keyword">if</span>(mp[nowStep][j] &amp;&amp; !used[j])&#123;  </span><br><span class="line">                used[j] = <span class="literal">true</span>;  </span><br><span class="line">                dfs(j, count+1);  </span><br><span class="line">                used[j] = <span class="literal">false</span>;    //记得消除！  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">return</span> ;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    memset(mp,<span class="literal">false</span>,sizeof(mp));  </span><br><span class="line">    inPut();  </span><br><span class="line">    <span class="keyword">while</span>(scanf(<span class="string">"%d"</span>,&amp;cas)&amp;&amp;cas)&#123;  </span><br><span class="line">        sumWays=0;  </span><br><span class="line">        memset(used,<span class="literal">false</span>,sizeof(used));  </span><br><span class="line">        //memset(way,0,sizeof(mp));  </span><br><span class="line">        used[cas]=<span class="literal">true</span>;  </span><br><span class="line">        dfs(cas,0); //深搜递归  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">return</span> 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/ACM-OJ/">ACM&OJ</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/07/20/[转载]KMP算法详解：简洁易懂的KMP算法/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">(转) KMP算法详解：简洁易懂的KMP算法</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
