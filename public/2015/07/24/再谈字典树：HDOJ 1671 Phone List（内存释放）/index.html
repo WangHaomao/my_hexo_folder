@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="再谈字典树：HDOJ 1671 Phone List（内存释放）"/>
+
+
+
+
+  <meta name="keywords" content="ACM&OJ," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/07/24/再谈字典树：HDOJ 1671 Phone List（内存释放）/"/>
+
+
+<meta name="description" content="前两天刚发了篇博客，讲的是两道简单的字典树，今天无意间看到了这道题，我觉得有必要再来扩充一下我的字典树知识：合理分配动态内存。记得上C++课的时候，老师讲过，用new创建的指针，程序结束后最好都用delete来删除动态内存，不然会造成内存泄露。然而以前做的题虽然内存开的很大，也没在意。看了今天这道，自己也反思了下，像很多网友说的，不要为了AC而AC，虽然说的很那啥，但这确实是值得我思考的。 看一下">
+<meta name="keywords" content="ACM&amp;OJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再谈字典树：HDOJ 1671 Phone List（内存释放）">
+<meta property="og:url" content="http://yoursite.com/2015/07/24/再谈字典树：HDOJ 1671 Phone List（内存释放）/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="前两天刚发了篇博客，讲的是两道简单的字典树，今天无意间看到了这道题，我觉得有必要再来扩充一下我的字典树知识：合理分配动态内存。记得上C++课的时候，老师讲过，用new创建的指针，程序结束后最好都用delete来删除动态内存，不然会造成内存泄露。然而以前做的题虽然内存开的很大，也没在意。看了今天这道，自己也反思了下，像很多网友说的，不要为了AC而AC，虽然说的很那啥，但这确实是值得我思考的。 看一下">
+<meta property="og:updated_time" content="2018-01-09T02:55:55.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再谈字典树：HDOJ 1671 Phone List（内存释放）">
+<meta name="twitter:description" content="前两天刚发了篇博客，讲的是两道简单的字典树，今天无意间看到了这道题，我觉得有必要再来扩充一下我的字典树知识：合理分配动态内存。记得上C++课的时候，老师讲过，用new创建的指针，程序结束后最好都用delete来删除动态内存，不然会造成内存泄露。然而以前做的题虽然内存开的很大，也没在意。看了今天这道，自己也反思了下，像很多网友说的，不要为了AC而AC，虽然说的很那啥，但这确实是值得我思考的。 看一下">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 再谈字典树：HDOJ 1671 Phone List（内存释放） - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          再谈字典树：HDOJ 1671 Phone List（内存释放）
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 24 2015
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>前两天刚发了篇博客，讲的是两道简单的字典树，今天无意间看到了这道题，我觉得有必要再来扩充一下我的字典树知识：合理分配动态内存。记得上C++课的时候，老师讲过，用new创建的指针，程序结束后最好都用delete来删除动态内存，不然会造成内存泄露。然而以前做的题虽然内存开的很大，也没在意。看了今天这道，自己也反思了下，像很多网友说的，不要为了AC而AC，虽然说的很那啥，但这确实是值得我思考的。</p>
+<p>看一下题吧：<br><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1671" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=1671</a></p>
+<p>题意：给你一组电话，如果里面有一些短的号码（设整个号码为i）和长一点的号码的前i个数字相同，那么电话机会自动拨打那个短号码，所以你就不能往下按了。就是你不能拨打那个长号码了。如果有这种短号码，即不能拨打某个号码，输出NO，否则输出YES；<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span>&#123;</span>  </span><br><span class="line">    Trie *next[<span class="number">11</span>];  </span><br><span class="line">    <span class="keyword">bool</span> boom;  </span><br><span class="line">    Trie()&#123;  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">11</span>;i++)  </span><br><span class="line">            next[i]=<span class="literal">NULL</span>;  </span><br><span class="line">        boom=<span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">bool</span> flag=<span class="literal">true</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buildAndSearch</span><span class="params">(<span class="keyword">char</span> s[],Trie *root)</span></span>&#123;  </span><br><span class="line">    Trie *now=root;  </span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(now-&gt;next[s[i]-<span class="string">'0'</span>]==<span class="literal">NULL</span>)  </span><br><span class="line">            now-&gt;next[s[i]-<span class="string">'0'</span>]=<span class="keyword">new</span> Trie;  </span><br><span class="line">        <span class="keyword">else</span>&#123;  </span><br><span class="line">            <span class="keyword">if</span>((now-&gt;next[s[i]-<span class="string">'0'</span>])-&gt;boom==<span class="literal">false</span>)&#123;  </span><br><span class="line">                flag=<span class="literal">false</span>; <span class="keyword">break</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        now=now-&gt;next[s[i]-<span class="string">'0'</span>];  </span><br><span class="line">    &#125;  </span><br><span class="line">    now-&gt;boom=<span class="literal">false</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">11</span>;i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(now-&gt;next[i]!=<span class="literal">NULL</span>)&#123;  </span><br><span class="line">            flag=<span class="literal">false</span>;<span class="keyword">return</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">freeDom</span><span class="params">(Trie *now)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">11</span>;i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(now-&gt;next[i]!=<span class="literal">NULL</span>) freeDom(now-&gt;next[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">delete</span> now;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> T;  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);<span class="comment">//scanf("\n");  </span></span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;  </span><br><span class="line">        flag=<span class="literal">true</span>;  </span><br><span class="line">        Trie *root=<span class="keyword">new</span> Trie;  </span><br><span class="line">        <span class="keyword">int</span> N;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N);<span class="built_in">scanf</span>(<span class="string">"\n"</span>);  </span><br><span class="line">        <span class="keyword">char</span> pn[<span class="number">11</span>];  </span><br><span class="line">        <span class="keyword">while</span>(N--)&#123;  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>,pn);  </span><br><span class="line">            buildAndSearch(pn,root);  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);  </span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);  </span><br><span class="line">        freeDom(root);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意911(先)   91125426(后) 和 91125426(先)   911(后)，输入循序不同要都考虑进去。当然，若是使用那种建树与查询分开的做法，好像是不用讨论的，具体我没试过，最后记得将每次的动态内存删除。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/ACM-OJ/">ACM&OJ</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/07/26/C++利用stl::sort对结构体数组中的字符串成员排序/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">C++利用stl::sort对结构体数组中的字符串成员排序</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/07/24/字典树例题介绍：ZOJ 1109,HDOJ 1075/">
+        <span class="next-text nav-default">字典树例题介绍：ZOJ 1109,HDOJ 1075</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

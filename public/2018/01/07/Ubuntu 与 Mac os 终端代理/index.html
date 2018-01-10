@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Ubuntu 与 Mac os 终端代理"/>
+
+
+
+
+  <meta name="keywords" content="Experence,Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/01/07/Ubuntu 与 Mac os 终端代理/"/>
+
+
+<meta name="description" content="主要使用SS(shadowsocks)做代理，在Ubuntu和大多数Linux中可以安装SS-qt图形化界面使用，当然使用 Python 脚本的 SS也是比较方便的; 在Mac os中，SS也可以在互联网上下载。使用其他方式对系统代理后，以下终端代理方法仍适用 注：SS的安装此处不提及，请访问其他相关页面 Ubuntu在Ubuntu中，推荐使用 proxychains安装比较简单，同时速度也不错，">
+<meta name="keywords" content="Experence,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 与 Mac os 终端代理">
+<meta property="og:url" content="http://yoursite.com/2018/01/07/Ubuntu 与 Mac os 终端代理/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="主要使用SS(shadowsocks)做代理，在Ubuntu和大多数Linux中可以安装SS-qt图形化界面使用，当然使用 Python 脚本的 SS也是比较方便的; 在Mac os中，SS也可以在互联网上下载。使用其他方式对系统代理后，以下终端代理方法仍适用 注：SS的安装此处不提及，请访问其他相关页面 Ubuntu在Ubuntu中，推荐使用 proxychains安装比较简单，同时速度也不错，">
+<meta property="og:updated_time" content="2018-01-10T09:32:59.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu 与 Mac os 终端代理">
+<meta name="twitter:description" content="主要使用SS(shadowsocks)做代理，在Ubuntu和大多数Linux中可以安装SS-qt图形化界面使用，当然使用 Python 脚本的 SS也是比较方便的; 在Mac os中，SS也可以在互联网上下载。使用其他方式对系统代理后，以下终端代理方法仍适用 注：SS的安装此处不提及，请访问其他相关页面 Ubuntu在Ubuntu中，推荐使用 proxychains安装比较简单，同时速度也不错，">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Ubuntu 与 Mac os 终端代理 - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Ubuntu 与 Mac os 终端代理
+        
+      </h1>
+
+      <time class="post-time">
+          Jan 07 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>主要使用SS(shadowsocks)做代理，在Ubuntu和大多数Linux中可以安装SS-qt图形化界面使用，当然使用 Python 脚本的 SS也是比较方便的; 在Mac os中，SS也可以在互联网上下载。使用其他方式对系统代理后，以下终端代理方法仍适用</p>
+<p>注：SS的安装此处不提及，请访问其他相关页面</p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>在Ubuntu中，推荐使用 proxychains<br>安装比较简单，同时速度也不错，配置也相对简单，以下是安装使用过程：</p>
+<p>proxychains 仓库地址： <a href="https://github.com/rofl0r/proxychains-ng" target="_blank" rel="noopener">https://github.com/rofl0r/proxychains-ng</a><br>详细配置与安装上述网站中有提及，如下</p>
+<h4 id="1、下载安装"><a href="#1、下载安装" class="headerlink" title="1、下载安装"></a>1、下载安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/rofl0r/proxychains-ng.git</span><br><span class="line">$ <span class="built_in">cd</span> proxychains-ng</span><br><span class="line"><span class="comment">#以下命令需要GCC环境，仓库地址中有提及</span></span><br><span class="line"><span class="comment">#needs a working C compiler, preferably gcc</span></span><br><span class="line">$ sudo make install </span><br><span class="line">$ sudo make install-config (installs proxychains.conf)</span><br></pre></td></tr></table></figure>
+<h4 id="2、完善配置文件"><a href="#2、完善配置文件" class="headerlink" title="2、完善配置文件"></a>2、完善配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/proxychains.conf</span><br><span class="line"><span class="comment">#找到[ProxyList] 后，添加代理信息，SS使用socks5，如果用http代理可使用http</span></span><br><span class="line">socks5  127.0.0.1 1080</span><br></pre></td></tr></table></figure>
+<h4 id="3、测试与使用"><a href="#3、测试与使用" class="headerlink" title="3、测试与使用"></a>3、测试与使用</h4><p>可以使用wget 测试 google.com 页面<br>proxychains 的用法是在需要使用的命令前加 proxychains4 ，例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ proxychains4 wget google.com</span><br><span class="line">$ sudo proxychains4 [your shell]</span><br></pre></td></tr></table></figure>
+<h2 id="Mac-os"><a href="#Mac-os" class="headerlink" title="Mac os"></a>Mac os</h2>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Experence/">Experence</a>
+		  
+			<a href="/tags/Linux/">Linux</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/01/07/我的博客搬家了/">
+        <span class="next-text nav-default">我的博客搬家了</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159"/>
+
+
+
+
+  <meta name="keywords" content="ACM&OJ," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/07/27/一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159/"/>
+
+
+<meta name="description" content="今天开始做DP（动态规划）的题了，按照刘汝佳大叔的话来说，动态规划不是严格意义上的算法，而是一种解决问题的策略。果然，这个叫策略的东西真是变化多样，不过呢还是有一些规律可以寻找的。像网上有许多大牛们总结的背包问题，还是挺不错的。下面贴几道今天刚做的背包转换的问题，还有个入门级的的lcs题。    第一题：http://acm.hdu.edu.cn/showproblem.php?pid=2126">
+<meta name="keywords" content="ACM&amp;OJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159">
+<meta property="og:url" content="http://yoursite.com/2015/07/27/一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="今天开始做DP（动态规划）的题了，按照刘汝佳大叔的话来说，动态规划不是严格意义上的算法，而是一种解决问题的策略。果然，这个叫策略的东西真是变化多样，不过呢还是有一些规律可以寻找的。像网上有许多大牛们总结的背包问题，还是挺不错的。下面贴几道今天刚做的背包转换的问题，还有个入门级的的lcs题。    第一题：http://acm.hdu.edu.cn/showproblem.php?pid=2126">
+<meta property="og:updated_time" content="2018-01-09T03:02:32.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159">
+<meta name="twitter:description" content="今天开始做DP（动态规划）的题了，按照刘汝佳大叔的话来说，动态规划不是严格意义上的算法，而是一种解决问题的策略。果然，这个叫策略的东西真是变化多样，不过呢还是有一些规律可以寻找的。像网上有许多大牛们总结的背包问题，还是挺不错的。下面贴几道今天刚做的背包转换的问题，还有个入门级的的lcs题。    第一题：http://acm.hdu.edu.cn/showproblem.php?pid=2126">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159 - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 27 2015
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>今天开始做DP（动态规划）的题了，按照刘汝佳大叔的话来说，动态规划不是严格意义上的算法，而是一种解决问题的策略。果然，这个叫策略的东西真是变化多样，不过呢还是有一些规律可以寻找的。像网上有许多大牛们总结的背包问题，还是挺不错的。下面贴几道今天刚做的背包转换的问题，还有个入门级的的lcs题。</p>
+<p>   第一题：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=2126" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=2126</a></p>
+<p>大意：大家出去旅游，想买纪念品，但是带的钱有限，问问带的钱最多能在N种商品中买几种。给出每件商品的价格，求出有几种方案买到最多的纪念品种类。</p>
+<p>虽然没说买几件，但想一下：他是要求种类，不是总题的数量，所以自然想到了0/1背包，但是要求记录种类，所以我们可以多创建个数组Kinds，再每次dp的时候对kinds数组也进行滚动操作，以下给出内存优化0/1背包写法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">500</span>+<span class="number">10</span>],kinds[<span class="number">500</span>+<span class="number">10</span>];<span class="comment">//kinds用来记录种类数  </span></span><br><span class="line"><span class="keyword">int</span> w[<span class="number">500</span>+<span class="number">10</span>];  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> T;  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);  </span><br><span class="line">    <span class="keyword">while</span>(T--)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">int</span> n,k;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;w[i]);  </span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=k+<span class="number">1</span>;i++)  </span><br><span class="line">            kinds[i]=<span class="number">1</span>;        <span class="comment">//初始值记1，不然结果会全为0的  </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=k;j&gt;=w[i];j--)  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="keyword">if</span>(dp[j]==dp[j-w[i]]+<span class="number">1</span>)             <span class="comment">//这里是0/1背包的经典决策方式  </span></span><br><span class="line">                    kinds[j]=kinds[j-w[i]]+kinds[j];  </span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(dp[j]&lt;dp[j-w[i]]+<span class="number">1</span>)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    dp[j]=dp[j-w[i]]+<span class="number">1</span>;             <span class="comment">//找到更优解则更新数组  </span></span><br><span class="line">                    kinds[j]=kinds[j-w[i]];  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span>(dp[k])  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"You have %d selection(s) to buy with %d kind(s) of souvenirs.\n"</span>,kinds[k],dp[k]);  </span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Sorry, you can't buy anything.\n"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二题 <a href="http://acm.hdu.edu.cn/showproblem.php?pid=1176" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=1176</a></p>
+<p>刚开始做成了min的0/1背包，果断错了。。。感觉到了不懂脑筋的后果。</p>
+<p>这题大概这么解：总之最后拿5块钱来买最贵的菜maxp元，剩下的m-5块钱在剩下的菜中尽可能地多买，最好用完，然后用总钱数减去5元，再减最贵的就是（m-5-maxp)最少价格了,下面给出代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;  </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1000</span>+<span class="number">10</span>];  </span><br><span class="line"><span class="keyword">int</span> w[<span class="number">1000</span>+<span class="number">10</span>];  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> n;  </span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)&amp;&amp;n)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));  </span><br><span class="line">        <span class="built_in">memset</span>(w,<span class="number">0</span>,<span class="keyword">sizeof</span>(w));  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;w[i]);  </span><br><span class="line">        sort(w,w+n);  </span><br><span class="line">        <span class="keyword">int</span> maxf=w[n<span class="number">-1</span>],tn=n<span class="number">-1</span>;  </span><br><span class="line">        <span class="keyword">int</span> m;  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);  </span><br><span class="line">        <span class="keyword">if</span>(m&lt;<span class="number">5</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,m);  </span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">int</span> tm=m<span class="number">-5</span>;  </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tn;i++)  </span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=tm;j&gt;=w[i];j--)  </span><br><span class="line">                    dp[j]=max(dp[j],dp[j-w[i]]+w[i]);  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,m-dp[tm]-maxf);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面这题，类似经典的塔类问题：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=2546" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=2546</a><br>采用自底向上的做法，用dp[ i ][ j ]来表示第i个坐标第j秒下落的馅饼数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100000+10  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">15</span>][MAXN];  </span><br><span class="line"><span class="keyword">int</span> t=<span class="number">0</span>;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> n;  </span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)&amp;&amp;n)&#123;  </span><br><span class="line">        t=<span class="number">0</span>;  </span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;  </span><br><span class="line">            <span class="keyword">int</span> x,tt;  </span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;tt);  </span><br><span class="line">            dp[x+<span class="number">1</span>][tt]++;  </span><br><span class="line">            t=max(tt,t);  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=t<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)  </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">11</span>;j++)  </span><br><span class="line">                dp[j][i]+=max(dp[j][i+<span class="number">1</span>],max(dp[j+<span class="number">1</span>][i+<span class="number">1</span>],dp[j<span class="number">-1</span>][i+<span class="number">1</span>]));  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dp[<span class="number">6</span>][<span class="number">0</span>]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后一题是最长公共子序列问题，我还在研究怎么输出来这个最长串：<br><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1159" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=1159</a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">char</span> a[<span class="number">1000</span>],b[<span class="number">1000</span>];  </span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1000</span>][<span class="number">1000</span>];  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dps</span><span class="params">(<span class="keyword">int</span> len1,<span class="keyword">int</span> len2,<span class="keyword">char</span> a[],<span class="keyword">char</span> b[])</span></span>&#123;  </span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len1;i++)&#123;  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=len2;j++)&#123;  </span><br><span class="line">            <span class="keyword">if</span>(a[i<span class="number">-1</span>]==b[j<span class="number">-1</span>]) dp[i][j]=dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>;  </span><br><span class="line">            <span class="keyword">else</span>&#123;  </span><br><span class="line">                dp[i][j]=max(dp[i<span class="number">-1</span>][j],dp[i][j<span class="number">-1</span>]);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> dp[len1][len2];  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,a,b)&amp;&amp;<span class="built_in">strlen</span>(a))&#123;  </span><br><span class="line">        <span class="keyword">int</span> len1=<span class="built_in">strlen</span>(a);  </span><br><span class="line">        <span class="keyword">int</span> len2=<span class="built_in">strlen</span>(b);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dps(len1,len2,a,b));  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>继续学习DP ！</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/ACM-OJ/">ACM&OJ</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/08/04/C++STL二分查找函数集及补充/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">C++STL二分查找函数集及补充</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/07/26/C++利用stl::sort对结构体数组中的字符串成员排序/">
+        <span class="next-text nav-default">C++利用stl::sort对结构体数组中的字符串成员排序</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

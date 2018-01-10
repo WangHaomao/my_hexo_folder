@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="C++利用stl::sort对结构体数组中的字符串成员排序"/>
+
+
+
+
+  <meta name="keywords" content="Tools," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Haomao'Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/07/26/C++利用stl::sort对结构体数组中的字符串成员排序/"/>
+
+
+<meta name="description" content="之前发过的帖中，有讲到过对结构体字符串进行排序的，除了手写之外，便想到用C/C++中的qsort来对结构体数组中的字符串进行排序。但是推广到sort中时，想了好久也没想明白，看看网上这样的帖也比较少，其实还是很好理解的，主要是std::sort的cmp函数要求是bool的返回值，随意抓住这点就可以。 问题大概是这样： 1234567891011121314151617#include &amp;lt;io">
+<meta name="keywords" content="Tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++利用stl::sort对结构体数组中的字符串成员排序">
+<meta property="og:url" content="http://yoursite.com/2015/07/26/C++利用stl::sort对结构体数组中的字符串成员排序/index.html">
+<meta property="og:site_name" content="Haomao&#39;Blog">
+<meta property="og:description" content="之前发过的帖中，有讲到过对结构体字符串进行排序的，除了手写之外，便想到用C/C++中的qsort来对结构体数组中的字符串进行排序。但是推广到sort中时，想了好久也没想明白，看看网上这样的帖也比较少，其实还是很好理解的，主要是std::sort的cmp函数要求是bool的返回值，随意抓住这点就可以。 问题大概是这样： 1234567891011121314151617#include &amp;lt;io">
+<meta property="og:updated_time" content="2018-01-09T02:59:46.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++利用stl::sort对结构体数组中的字符串成员排序">
+<meta name="twitter:description" content="之前发过的帖中，有讲到过对结构体字符串进行排序的，除了手写之外，便想到用C/C++中的qsort来对结构体数组中的字符串进行排序。但是推广到sort中时，想了好久也没想明白，看看网上这样的帖也比较少，其实还是很好理解的，主要是std::sort的cmp函数要求是bool的返回值，随意抓住这点就可以。 问题大概是这样： 1234567891011121314151617#include &amp;lt;io">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> C++利用stl::sort对结构体数组中的字符串成员排序 - Haomao'Blog </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Haomao'Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                tags
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          C++利用stl::sort对结构体数组中的字符串成员排序
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 26 2015
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>之前发过的帖中，有讲到过对结构体字符串进行排序的，除了手写之外，便想到用C/C++中的qsort来对结构体数组中的字符串进行排序。但是推广到sort中时，想了好久也没想明白，看看网上这样的帖也比较少，其实还是很好理解的，主要是std::sort的cmp函数要求是bool的返回值，随意抓住这点就可以。</p>
+<p>问题大概是这样：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tmpToStruct</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">char</span> ArraryString[MAXN];  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line">tmpToStruct step[<span class="number">5</span>+<span class="number">1</span>];  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,step[i].ArraryString);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对step里的ArraryString按照字符串的字典序进行排序，下面给出sort排序的方法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tmpToStruct</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">char</span> arrStr[MAXN];  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line">tmpToStruct step[<span class="number">5</span>+<span class="number">1</span>];  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">upCmp</span><span class="params">(<span class="keyword">const</span> tmpToStruct &amp;tmp1,<span class="keyword">const</span> tmpToStruct &amp;tmp2)</span></span>&#123;  </span><br><span class="line">         <span class="keyword">return</span> <span class="built_in">strcmp</span>(tmp1.arrStr,tmp2.arrStr)&lt;<span class="number">0</span> ? <span class="literal">true</span> : <span class="literal">false</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">downCmp</span><span class="params">(<span class="keyword">const</span> tmpToStruct &amp;tmp1,<span class="keyword">const</span> tmpToStruct &amp;tmp2)</span></span>&#123;  </span><br><span class="line">         <span class="keyword">return</span> <span class="built_in">strcmp</span>(tmp1.arrStr,tmp2.arrStr)&gt;<span class="number">0</span> ? <span class="literal">true</span> : <span class="literal">false</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"before the sort:"</span>);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)  </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,step[i].arrStr);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">  </span><br><span class="line">    sort(step,step+<span class="number">5</span>,upCmp);  </span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"after the up sort:"</span>);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)  </span><br><span class="line">        <span class="built_in">puts</span>(step[i].arrStr);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"after the down sort:"</span>);  </span><br><span class="line">    sort(step,step+<span class="number">5</span>,downCmp);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)  </span><br><span class="line">        <span class="built_in">puts</span>(step[i].arrStr);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对比下qsort的排序，还是很简短的。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Tools/">Tools</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/07/27/一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">一些DP经典问题：HDU(hdoj) 2126，1176，2546，1159</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/07/24/再谈字典树：HDOJ 1671 Phone List（内存释放）/">
+        <span class="next-text nav-default">再谈字典树：HDOJ 1671 Phone List（内存释放）</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">Haomao.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
